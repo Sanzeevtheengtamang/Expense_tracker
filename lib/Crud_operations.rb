@@ -17,7 +17,7 @@ class CrudOperations
     end
 
     def insert_expense
-        # input_expense
+        input_expense
         if @date == ""
             @date = 'now()'
             $client.query("insert into Expense (expense,description,date) values ('#{@expns}','#{@descpt}',#{@date})")
@@ -27,3 +27,5 @@ class CrudOperations
         $client
     end
 end
+
+
