@@ -1,10 +1,10 @@
 require_relative '../lib/Crud_operations.rb'
 
 class ArrayDisplay
-    attr_accessor :array ,:expense_id, :expense_amount, :expense_date, :expense_description
+    attr_accessor :array ,:expense_id, :expense_amount, :expense_date, :expense_description, :data
     def array_expense_id
         @array = []
-        b = $client.query("select id from Expense")
+        # b = $client.query("select id from Expense")
         b = $client.query("select id from Expense")
             b.each do |c|
                 c.each do |keys,values|
@@ -49,6 +49,15 @@ class ArrayDisplay
         @expense_date = @array
         $client
     end
+
+    def comparison_array(id)
+        quer=$client.query("select * from Expense where id = #{id}")
+        @array=[]
+        quer.each do |data|
+            @array.push(data)
+        end
+        @data = @array
+    end 
     
     def final_display
         puts " |  Id " "| Amount " " | Date " " | Description "

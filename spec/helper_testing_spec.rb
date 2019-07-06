@@ -47,23 +47,8 @@ RSpec.describe ".Helper " do
             end
         end 
 
-        it "All data are successfully taken" do
-            expect(a.affected_rows).to eql(obj.expense_id.length),"Some data are missing"
-            expect(b.affected_rows).to eql(obj.expense_amount.length),"Some data are missing"
-            expect(c.affected_rows).to eql(obj.expense_description.length),"Some data are missing"
-            expect(d.affected_rows).to eql(obj.expense_date.length),"Some data are missing"
 
-        end 
-        
     end 
 end
-
-RSpec.describe "Display" do
-    obj = ArrayDisplay.new
-    obj.final_display
-    it 'Display Table' do
-        expect($stdout).to receive(:puts).with(" |  Id " "| Amount " " | Date " " | Description " )
-    end
-end
-            
+           
 

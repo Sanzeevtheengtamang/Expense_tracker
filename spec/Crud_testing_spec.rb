@@ -14,16 +14,32 @@ RSpec.describe "Crud Operations" do
             expect(obj.descpt).to eql("this is a test description")
             expect(obj.date).to eql("2019-01-09")
         end
-        
+    end 
+    
+    describe "Insert Expense" do     
         it "Inserts Data in database" do
             obj = CrudOperations.new
             allow(obj).to receive(:gets).and_return("5\n","this is a test description\n","2019-01-09\n")
-            obj.input_expense
             a=obj.insert_expense
             expect(a.affected_rows).to eql(1)
-        end   
-        
+        end
+    end 
+    
+    describe "Edit Expense" do     
+        it "Edit's Data in database" do
+            obj = CrudOperations.new
+            a =obj.edit_expense
+            puts obj.id
 
-    end
+            obj1 = ArrayDisplay.new
+            obj1.comparison_array(obj.id)
+                        
+            data1 = obj1.data
+            data2= obj.old_array
+            expect(data1).not_to match_array(data2)
+            expect(a.affected_rows).to eql(1)
+        end
+    end 
+    
 end
 

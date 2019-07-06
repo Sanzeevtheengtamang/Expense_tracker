@@ -1,7 +1,8 @@
 require_relative '../lib/database_connection.rb'
+require_relative '../lib/helper.rb'
 require 'pry'
 class CrudOperations
-    attr_accessor :expns, :descpt, :date
+    attr_accessor :expns, :descpt, :date, :id, :old_array
     def input_expense
         puts "Enter Your Expense"        
         @expns = gets.chomp.to_f
@@ -26,6 +27,27 @@ class CrudOperations
         end
         $client
     end
+
+    def edit_expense
+        obj = ArrayDisplay.new
+        obj.final_display
+        puts "Select id to edit details"
+        @id = gets.to_i
+        obj.array_expense_id
+        if obj.expense_id.include?(@id) == true
+            obj.comparison_array(@id)
+            @old_array = obj.data
+            puts @old_array
+          input_expense
+          if @date == ""
+              @date = 'now()'
+              $client.query("update Expense set expense= #{@expns}, description= '#{@descpt}', date=#{@date} where id=#{@id}")
+          else 
+              $client.query("update Expense set expense= #{@expns}, description= '#{@descpt}', date='#{@date}' where id=#{@id}")
+          end
+      end 
+          $client
+      end  
 end
 
 
