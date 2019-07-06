@@ -7,4 +7,4 @@ obj2 = ArrayDisplay.new
 a = obj2.array_expense_amount
 p obj2.expense_amount
 
-obj1.edit_expense
+obj1.delete_expense

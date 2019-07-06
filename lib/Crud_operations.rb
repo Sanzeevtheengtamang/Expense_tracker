@@ -48,6 +48,22 @@ class CrudOperations
       end 
           $client
       end  
+
+      def delete_expense
+        obj = ArrayDisplay.new
+        obj.final_display
+        puts "Select id to delete details"
+        @id = gets.to_i
+        obj.array_expense_id
+        if obj.expense_id.include?(@id) == true
+            $client.query("Delete from Expense where id=#{@id}")
+            $client.query("ALTER TABLE Expense AUTO_INCREMENT = 1")
+            puts "#{@id}" + " " + "Deleted successfully"
+        else
+            puts "invlaid input Try Again !"
+        end       
+        $client
+    end
 end
 
 

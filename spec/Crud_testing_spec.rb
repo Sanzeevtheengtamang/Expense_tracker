@@ -41,5 +41,13 @@ RSpec.describe "Crud Operations" do
         end
     end 
     
+    describe "Delete Expense" do     
+        it "Deltes Data according to id in database" do
+            obj = CrudOperations.new
+            a =obj.delete_expense
+            puts obj.id
+            expect(a.affected_rows).to eql(1)
+        end
+    end 
 end
 
