@@ -70,7 +70,16 @@ class CrudOperations
     def total_expense(array)
         @sum_expenses = array.reduce {|sum,n| sum+n }
         @sum_expenses
-    end      
+    end 
+    
+    def filter
+        puts " Enter Date in YYYY-MM-DD Format or Press Enter for Default/Current Date"
+        @date = gets.chomp
+        filtered = $client.query("SELECT * from Expense where date ='#{@date}'")     
+        filtered.each do |a|
+          puts a
+        end
+    end
 end
 
 

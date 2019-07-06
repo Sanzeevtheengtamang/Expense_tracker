@@ -10,6 +10,7 @@ obj4 = ArrayDisplayIncome.new
 
 # a = obj2.array_expense_amount
 # p obj2.expense_amount
+obj1.filter
 
 # obj1.delete_expense
 # obj1.total_expense(obj2.expense_amount)

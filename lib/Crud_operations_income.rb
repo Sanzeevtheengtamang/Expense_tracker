@@ -70,7 +70,16 @@ class CrudOperationsIncome
     def total_income(array)
         @sum_income = array.reduce {|sum,n| sum+n }
         @sum_income
-    end      
+    end    
+    
+    def filter
+        puts " Enter Date in YYYY-MM-DD Format or Press Enter for Default/Current Date"
+        @date = gets.chomp
+        filtered = $client.query("SELECT * from Income where date ='#{@date}'")     
+        filtered.each do |a|
+          puts a
+        end
+    end
 end
 
 
