@@ -46,8 +46,7 @@ RSpec.describe ".Helper " do
                 expect(d.affected_rows).to be >= 1
             end
         end 
-
-
+         
     end 
 end
            

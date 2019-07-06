@@ -57,13 +57,20 @@ class CrudOperations
         obj.array_expense_id
         if obj.expense_id.include?(@id) == true
             $client.query("Delete from Expense where id=#{@id}")
-            $client.query("ALTER TABLE Expense AUTO_INCREMENT = 1")
             puts "#{@id}" + " " + "Deleted successfully"
+            db = $client
+            # $client.query("ALTER TABLE Expense AUTO_INCREMENT = 1")
+            
         else
             puts "invlaid input Try Again !"
-        end       
-        $client
+        end 
+        return db
     end
+
+    def total_expense(array)
+        total_expense = array.reduce {|sum,n| sum+n }
+        p total_expense
+    end      
 end
 
 

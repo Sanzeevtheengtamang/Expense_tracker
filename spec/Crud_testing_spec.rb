@@ -49,5 +49,15 @@ RSpec.describe "Crud Operations" do
             expect(a.affected_rows).to eql(1)
         end
     end 
+
+    describe "Total Expense" do
+        it "should Display sum from Array" do
+            array= [1,2,3,4,5]
+            obj = CrudOperations.new
+            a = obj.total_expense(array)
+            expect(a).to eql(15)
+        end 
+    end            
+
 end
 
