@@ -2,7 +2,7 @@ require_relative '../lib/database_connection.rb'
 require_relative '../lib/helper.rb'
 require 'pry'
 class CrudOperations
-    attr_accessor :expns, :descpt, :date, :id, :old_array
+    attr_accessor :expns, :descpt, :date, :id, :old_array, :sum_expenses
     def input_expense
         puts "Enter Your Expense"        
         @expns = gets.chomp.to_f
@@ -68,8 +68,8 @@ class CrudOperations
     end
 
     def total_expense(array)
-        total_expense = array.reduce {|sum,n| sum+n }
-        p total_expense
+        @sum_expenses = array.reduce {|sum,n| sum+n }
+        @sum_expenses
     end      
 end
 
